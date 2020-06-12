@@ -1,8 +1,5 @@
 FROM python:3.7-slim
 
-WORKDIR /app
-COPY Pipfile Pipfile.lock /app/
-
 RUN set -xe \
   && pip install pipenv \
   && apt-get update -q \
