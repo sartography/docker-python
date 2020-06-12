@@ -4,8 +4,11 @@ python:
   - "3.7"
 
 services:
-  - postgresql
   - docker
+
+install:
+  - sudo pip install --upgrade pip
+  - export PATH=$PATH:$HOME/.local/bin
 
 deploy:
   provider: script
