@@ -4,7 +4,7 @@ function branch_to_tag () {
   if [ "$1" == "latest" ]; then echo "production"; else echo "$1" ; fi
 }
 
-REPO="sartography/cr-connect-workflow"
+REPO="sartography/cr-connect-python-base"
 TAG=$(branch_to_tag "$TRAVIS_BRANCH")
 
 # Build and push Docker image to Docker Hub
