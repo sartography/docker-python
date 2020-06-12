@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function branch_to_tag () {
-  if [ "$1" == "latest" ]; then echo "production"; else echo "$1" ; fi
+  if [ "$1" == "master" ]; then echo "latest"; else echo "$1" ; fi
 }
 
 REPO="sartography/cr-connect-python-base"
