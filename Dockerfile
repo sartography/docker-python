@@ -4,9 +4,6 @@ WORKDIR /app
 COPY Pipfile Pipfile.lock /app/
 
 RUN set -xe \
-  && pipenv install --dev \
-
-RUN set -xe \
   && pip install pipenv \
   && apt-get update -q \
   && apt-get install -y -q \
