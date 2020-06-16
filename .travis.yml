@@ -7,11 +7,7 @@ services:
   - docker
 
 install:
-  - sudo pip install --upgrade pip
-  - export PATH=$PATH:$HOME/.local/bin
-
-script:
-  - bash deploy.sh
+  - bash deploy.sh sartography/cr-connect-python-base
 
 notifications:
   email:
