@@ -6,8 +6,10 @@ python:
 services:
   - docker
 
-install:
-  - bash deploy.sh sartography/cr-connect-python-base
+install: skip
+
+script:
+  - bash ./deploy.sh sartography/cr-connect-python-base
 
 notifications:
   email:
