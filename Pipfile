@@ -1,0 +1,45 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pbr = "*"
+
+[packages]
+connexion = {extras = ["swagger-ui"],version = "*"}
+swagger-ui-bundle = "*"
+flask = "*"
+flask-bcrypt = "*"
+flask-cors = "*"
+flask-marshmallow = "*"
+flask-migrate = "*"
+flask-restful = "*"
+httpretty = "*"
+marshmallow = "*"
+marshmallow-enum = "*"
+marshmallow-sqlalchemy = "*"
+openpyxl = "*"
+pyjwt = "*"
+requests = "*"
+xlsxwriter = "*"
+webtest = "*"
+spiffworkflow = {editable = true,git = "https://github.com/sartography/SpiffWorkflow.git",ref = "deploy"}
+alembic = "*"
+coverage = "*"
+sphinx = "*"
+recommonmark = "*"
+psycopg2-binary = "*"
+docxtpl = "*"
+python-dateutil = "*"
+pandas = "*"
+xlrd = "*"
+ldap3 = "*"
+gunicorn = "*"
+werkzeug = "*"
+sentry-sdk = {extras = ["flask"],version = "==0.14.4"}
+flask-mail = "*"
+
+[requires]
+python_version = "3.7"
