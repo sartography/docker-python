@@ -12,3 +12,4 @@ RUN set -xe \
         gunicorn3 postgresql-client \
   && pipenv install --dev
 
+WORKDIR /app
