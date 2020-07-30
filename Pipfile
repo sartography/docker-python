@@ -47,6 +47,7 @@ xlrd = "*"
 xlsxwriter = "*"
 pygithub = "*"
 python-box = "*"
+python-levenshtein-wheels = "*"  # This is not a direct dependency, but a dependecy in spiff, and hsould not need to be here.
 
 [requires]
 python_version = "3.7"
