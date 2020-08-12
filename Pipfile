@@ -38,16 +38,14 @@ recommonmark = "*"
 requests = "*"
 sentry-sdk = {extras = ["flask"],version = "==0.14.4"}
 sphinx = "*"
-spiffworkflow = {git = "https://github.com/sartography/SpiffWorkflow.git",ref = "master"}
-#spiffworkflow = {editable = true,path="/home/kelly/sartography/SpiffWorkflow/"}
 swagger-ui-bundle = "*"
+spiffworkflow = {git = "https://github.com/sartography/SpiffWorkflow.git", ref = "master"}
 webtest = "*"
 werkzeug = "*"
 xlrd = "*"
 xlsxwriter = "*"
 pygithub = "*"
 python-box = "*"
-python-levenshtein-wheels = "*"  # This is not a direct dependency, but a dependecy in spiff, and hsould not need to be here.
 
 [requires]
 python_version = "3.7"
