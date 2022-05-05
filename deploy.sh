@@ -48,5 +48,5 @@ docker build -f Dockerfile -t "$docker_repo:$docker_tag" .
 
 # Push Docker image to Docker Hub
 echo "Publishing to Docker Hub..."
-docker push "$docker_repo"
+docker push "${docker_repo}:${docker_tag}"
 echo "Done."
