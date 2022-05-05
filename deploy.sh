@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+function error_handler() {
+  >&2 echo "Exited with BAD EXIT CODE '${2}' in ${0} script at line: ${1}."
+  exit "$2"
+}
+trap 'error_handler ${LINENO} $?' ERR
+set -o errtrace -o errexit -o nounset -o pipefail
 
 #########################################################################
 # Builds the Docker image for the current git branch on Travis CI and
@@ -13,7 +20,7 @@
 #########################################################################
 
 echo 'Building Docker image...'
-DOCKER_REPO="$1"
+docker_repo="${1:-}"
 
 function branch_to_tag () {
   if [ "$1" == "master" ]; then echo "latest"; else echo "$1" ; fi
@@ -23,23 +30,23 @@ function branch_to_deploy_group() {
   if [[ $1 =~ ^(rrt\/.*)$ ]]; then echo "rrt"; else echo "crconnect" ; fi
 }
 
-DOCKER_TAG=$(branch_to_tag "$TRAVIS_BRANCH")
+docker_tag=$(branch_to_tag "$TRAVIS_BRANCH")
 
-DEPLOY_GROUP=$(branch_to_deploy_group "$TRAVIS_BRANCH")
+deploy_group=$(branch_to_deploy_group "$TRAVIS_BRANCH")
 
-if [ "$DEPLOY_GROUP" == "rrt" ]; then
+if [ "$deploy_group" == "rrt" ]; then
   IFS='/' read -ra ARR <<< "$TRAVIS_BRANCH"  # Split branch on '/' character
-  DOCKER_TAG=$(branch_to_tag "rrt_${ARR[1]}")
+  docker_tag=$(branch_to_tag "rrt_${ARR[1]}")
 fi
 
-echo "DOCKER_REPO = $DOCKER_REPO"
-echo "DOCKER_TAG = $DOCKER_TAG"
+echo "docker_repo = $docker_repo"
+echo "docker_tag = $docker_tag"
 
-echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin || exit 1
-docker build -f Dockerfile -t "$DOCKER_REPO:$DOCKER_TAG" . || exit 1
+echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
+docker build -f Dockerfile -t "$docker_repo:$docker_tag" .
 
 
 # Push Docker image to Docker Hub
 echo "Publishing to Docker Hub..."
-docker push "$DOCKER_REPO" || exit 1
+docker push "$docker_repo"
 echo "Done."
