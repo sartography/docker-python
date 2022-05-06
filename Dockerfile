@@ -1,15 +1,18 @@
-FROM python:3.9-slim
+FROM busybox
 
-WORKDIR /app
-COPY Pipfile Pipfile.lock /app/
-
-RUN set -xe \
-  && pip install pipenv \
-  && apt-get update -q \
-  && apt-get install -y -q \
-        gcc python3-dev libssl-dev \
-        curl postgresql-client git-core \
-        gunicorn3 postgresql-client \
-  && pipenv install --dev
-
-WORKDIR /app
+RUN touch /var/tmp/just_making_a_change
+# FROM python:3.9-slim
+#
+# WORKDIR /app
+# COPY Pipfile Pipfile.lock /app/
+#
+# RUN set -xe \
+#   && pip install pipenv \
+#   && apt-get update -q \
+#   && apt-get install -y -q \
+#         gcc python3-dev libssl-dev \
+#         curl postgresql-client git-core \
+#         gunicorn3 postgresql-client \
+#   && pipenv install --dev
+#
+# WORKDIR /app

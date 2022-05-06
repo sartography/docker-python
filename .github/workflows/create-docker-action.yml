@@ -2,12 +2,12 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', 'feature/*']
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: sartography/python
-  # IMAGE_NAME: ${{ github.repository }}
+  # IMAGE_NAME: sartography/python
+  IMAGE_NAME: sartography/busybox
 
 jobs:
   build-and-push-image:
