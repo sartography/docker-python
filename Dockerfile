@@ -1,6 +1,6 @@
 FROM busybox
 
-RUN touch /var/tmp/just_making_a_change
+RUN touch /just_making_a_change
 # FROM python:3.9-slim
 #
 # WORKDIR /app
