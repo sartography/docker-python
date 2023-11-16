@@ -14,5 +14,6 @@ RUN set -xe \
        curl \
        git-core \
        gunicorn3 \
+       procps \
  && rm -rf /var/lib/apt/lists/* \
            /var/cache/apt/archives
